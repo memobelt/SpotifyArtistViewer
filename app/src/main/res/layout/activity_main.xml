@@ -19,16 +19,19 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="7"
+            android:layout_weight="9"
             android:hint="@string/artist_name"
             android:id="@+id/etArtistName"/>
 
-        <Button
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:text="@string/search"
-            android:id="@+id/btnArtist"/>
+            android:id="@+id/btnArtist"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="#00ffffff"
+            android:layout_gravity="center" />
 
     </LinearLayout>
 

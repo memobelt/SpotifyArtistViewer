@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
@@ -51,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        Button btnArtist = (Button) findViewById(R.id.btnArtist);
+        ImageButton btnArtist = (ImageButton) findViewById(R.id.btnArtist);
         assert btnArtist != null;
         btnArtist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchArtist(etArtistName);
+                etArtistName.setText("");
             }
         });
         mArtistAdapter = new ArtistAdapter(this, true);
