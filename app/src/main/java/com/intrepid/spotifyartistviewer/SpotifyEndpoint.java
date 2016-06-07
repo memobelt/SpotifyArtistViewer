@@ -1,5 +1,7 @@
 package com.intrepid.spotifyartistviewer;
 
+import com.intrepid.spotifyartistviewer.ArtistInfo.ArtistInfo;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -13,7 +15,7 @@ import retrofit2.http.Query;
  */
 public interface SpotifyEndpoint {
     @GET("search?type=artist")
-    Call<List<ArtistsInfo>> artist(@Query("q") String artist);
+    Call<ArtistInfo> artist(@Query("q") String artist);
     public static final String BASE_URL = "https://api.spotify.com/v1/";
     public static final Retrofit retrofit = new Retrofit.Builder()
                                             .addConverterFactory(GsonConverterFactory.create())
