@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 searchArtist(etArtistName);
             }
         });
-        mArtistAdapter = new ArtistAdapter();
+        mArtistAdapter = new ArtistAdapter(this);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
