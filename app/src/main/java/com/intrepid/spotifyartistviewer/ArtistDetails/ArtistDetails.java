@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -92,6 +93,8 @@ public class ArtistDetails extends AppCompatActivity {
             StringBuffer json = new StringBuffer(1024);
             String tmp = "";
             try {
+                if(reader==null)
+                    return new ArrayList<>();
                 while ((tmp = reader.readLine()) != null)
                     json.append(tmp).append("\n");
             } catch (IOException e) {

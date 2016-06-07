@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
 import com.intrepid.spotifyartistviewer.ArtistInfoPojo.ArtistInfo;
@@ -25,12 +28,29 @@ import java.util.concurrent.ExecutionException;
 public class MainActivity extends AppCompatActivity {
 
     ArtistAdapter mArtistAdapter;
+    private RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final EditText etArtistName = (EditText) findViewById(R.id.etArtistName);
+        etArtistName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                searchArtist(etArtistName);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         Button btnArtist = (Button) findViewById(R.id.btnArtist);
         assert btnArtist != null;
         btnArtist.setOnClickListener(new View.OnClickListener() {
@@ -43,23 +63,30 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
+        rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setAdapter(mArtistAdapter);
         rv.setLayoutManager(llm);
     }
 
     public void searchArtist(EditText et){
-        try {
-            List<Item> items = new FetchArtistTask().execute(et.getText().toString()).get();
-            mArtistAdapter.newSearch();
-            for (Item item : items) {
-                mArtistAdapter.addArtistItem(item);
+        String search = et.getText().toString();
+        if(!search.isEmpty()) {
+            try {
+                List<Item> items = new FetchArtistTask().execute(search).get();
+                mArtistAdapter.newSearch();
+                for (Item item : items) {
+                    mArtistAdapter.addArtistItem(item);
+                }
+                mArtistAdapter.notifyDataSetChanged();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
+        }
+        else{
+            mArtistAdapter.mArtists.clear();
             mArtistAdapter.notifyDataSetChanged();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
         }
     }
 
