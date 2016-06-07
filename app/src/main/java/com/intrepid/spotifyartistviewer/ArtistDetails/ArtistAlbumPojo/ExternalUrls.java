@@ -1,5 +1,5 @@
 
-package com.intrepid.spotifyartistviewer.ArtistInfo;
+package com.intrepid.spotifyartistviewer.ArtistDetails.ArtistAlbumPojo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,56 +14,33 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
-    "href",
-    "total"
+    "spotify"
 })
-public class Followers {
+public class ExternalUrls {
 
-    @JsonProperty("href")
-    private Object href;
-    @JsonProperty("total")
-    private Integer total;
+    @JsonProperty("spotify")
+    private String spotify;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * 
      * @return
-     *     The href
+     *     The spotify
      */
-    @JsonProperty("href")
-    public Object getHref() {
-        return href;
+    @JsonProperty("spotify")
+    public String getSpotify() {
+        return spotify;
     }
 
     /**
      * 
-     * @param href
-     *     The href
+     * @param spotify
+     *     The spotify
      */
-    @JsonProperty("href")
-    public void setHref(Object href) {
-        this.href = href;
-    }
-
-    /**
-     * 
-     * @return
-     *     The total
-     */
-    @JsonProperty("total")
-    public Integer getTotal() {
-        return total;
-    }
-
-    /**
-     * 
-     * @param total
-     *     The total
-     */
-    @JsonProperty("total")
-    public void setTotal(Integer total) {
-        this.total = total;
+    @JsonProperty("spotify")
+    public void setSpotify(String spotify) {
+        this.spotify = spotify;
     }
 
     @JsonAnyGetter

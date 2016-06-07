@@ -1,8 +1,6 @@
 package com.intrepid.spotifyartistviewer;
 
-import com.intrepid.spotifyartistviewer.ArtistInfo.ArtistInfo;
-
-import java.util.List;
+import com.intrepid.spotifyartistviewer.ArtistInfoPojo.ArtistInfo;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;

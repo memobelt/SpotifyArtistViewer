@@ -1,5 +1,5 @@
 
-package com.intrepid.spotifyartistviewer.ArtistInfo;
+package com.intrepid.spotifyartistviewer.ArtistDetails.ArtistAlbumPojo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "previous",
     "total"
 })
-public class Artists {
+public class ArtistAlbums {
 
     @JsonProperty("href")
     private String href;

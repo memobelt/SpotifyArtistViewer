@@ -1,5 +1,5 @@
 
-package com.intrepid.spotifyartistviewer.ArtistInfo;
+package com.intrepid.spotifyartistviewer.ArtistDetails.ArtistAlbumPojo;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,5 +1,5 @@
 
-package com.intrepid.spotifyartistviewer.ArtistInfo;
+package com.intrepid.spotifyartistviewer.ArtistDetails.ArtistAlbumPojo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,25 +16,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
+    "album_type",
+    "available_markets",
     "external_urls",
-    "followers",
-    "genres",
     "href",
     "id",
     "images",
     "name",
-    "popularity",
     "type",
     "uri"
 })
 public class Item {
 
+    @JsonProperty("album_type")
+    private String albumType;
+    @JsonProperty("available_markets")
+    private List<String> availableMarkets = new ArrayList<String>();
     @JsonProperty("external_urls")
     private ExternalUrls externalUrls;
-    @JsonProperty("followers")
-    private Followers followers;
-    @JsonProperty("genres")
-    private List<Object> genres = new ArrayList<Object>();
     @JsonProperty("href")
     private String href;
     @JsonProperty("id")
@@ -43,14 +42,52 @@ public class Item {
     private List<Image> images = new ArrayList<Image>();
     @JsonProperty("name")
     private String name;
-    @JsonProperty("popularity")
-    private Integer popularity;
     @JsonProperty("type")
     private String type;
     @JsonProperty("uri")
     private String uri;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * 
+     * @return
+     *     The albumType
+     */
+    @JsonProperty("album_type")
+    public String getAlbumType() {
+        return albumType;
+    }
+
+    /**
+     * 
+     * @param albumType
+     *     The album_type
+     */
+    @JsonProperty("album_type")
+    public void setAlbumType(String albumType) {
+        this.albumType = albumType;
+    }
+
+    /**
+     * 
+     * @return
+     *     The availableMarkets
+     */
+    @JsonProperty("available_markets")
+    public List<String> getAvailableMarkets() {
+        return availableMarkets;
+    }
+
+    /**
+     * 
+     * @param availableMarkets
+     *     The available_markets
+     */
+    @JsonProperty("available_markets")
+    public void setAvailableMarkets(List<String> availableMarkets) {
+        this.availableMarkets = availableMarkets;
+    }
 
     /**
      * 
@@ -70,46 +107,6 @@ public class Item {
     @JsonProperty("external_urls")
     public void setExternalUrls(ExternalUrls externalUrls) {
         this.externalUrls = externalUrls;
-    }
-
-    /**
-     * 
-     * @return
-     *     The followers
-     */
-    @JsonProperty("followers")
-    public Followers getFollowers() {
-        return followers;
-    }
-
-    /**
-     * 
-     * @param followers
-     *     The followers
-     */
-    @JsonProperty("followers")
-    public void setFollowers(Followers followers) {
-        this.followers = followers;
-    }
-
-    /**
-     * 
-     * @return
-     *     The genres
-     */
-    @JsonProperty("genres")
-    public List<Object> getGenres() {
-        return genres;
-    }
-
-    /**
-     * 
-     * @param genres
-     *     The genres
-     */
-    @JsonProperty("genres")
-    public void setGenres(List<Object> genres) {
-        this.genres = genres;
     }
 
     /**
@@ -190,26 +187,6 @@ public class Item {
     @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * 
-     * @return
-     *     The popularity
-     */
-    @JsonProperty("popularity")
-    public Integer getPopularity() {
-        return popularity;
-    }
-
-    /**
-     * 
-     * @param popularity
-     *     The popularity
-     */
-    @JsonProperty("popularity")
-    public void setPopularity(Integer popularity) {
-        this.popularity = popularity;
     }
 
     /**

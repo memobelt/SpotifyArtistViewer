@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
-import com.intrepid.spotifyartistviewer.ArtistInfo.ArtistInfo;
-import com.intrepid.spotifyartistviewer.ArtistInfo.Item;
+import com.intrepid.spotifyartistviewer.ArtistInfoPojo.ArtistInfo;
+import com.intrepid.spotifyartistviewer.ArtistInfoPojo.Item;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 searchArtist(etArtistName);
             }
         });
-        mArtistAdapter = new ArtistAdapter(this);
+        mArtistAdapter = new ArtistAdapter(this, true);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
