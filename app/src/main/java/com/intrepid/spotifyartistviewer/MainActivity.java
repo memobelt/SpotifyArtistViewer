@@ -1,17 +1,15 @@
 package com.intrepid.spotifyartistviewer;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
 import com.intrepid.spotifyartistviewer.ArtistInfoPojo.ArtistInfo;
@@ -28,7 +26,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArtistAdapter mArtistAdapter;
+    ArtistAdapter artistAdapter;
     private RecyclerView rv;
 
     @Override
@@ -60,38 +58,37 @@ public class MainActivity extends AppCompatActivity {
                 etArtistName.setText("");
             }
         });
-        mArtistAdapter = new ArtistAdapter(this, true);
+        artistAdapter = new ArtistAdapter(this, true);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rv = (RecyclerView) findViewById(R.id.recyclerView);
-        rv.setAdapter(mArtistAdapter);
+        rv.setAdapter(artistAdapter);
         rv.setLayoutManager(llm);
     }
 
-    public void searchArtist(EditText et){
+    public void searchArtist(EditText et) {
         String search = et.getText().toString();
-        if(!search.isEmpty()) {
+        if (!search.isEmpty()) {
             try {
                 List<Item> items = new FetchArtistTask().execute(search).get();
-                mArtistAdapter.newSearch();
+                artistAdapter.newSearch();
                 for (Item item : items) {
-                    mArtistAdapter.addArtistItem(item);
+                    artistAdapter.addArtistItem(item);
                 }
-                mArtistAdapter.notifyDataSetChanged();
+                artistAdapter.notifyDataSetChanged();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-        }
-        else{
-            mArtistAdapter.mArtists.clear();
-            mArtistAdapter.notifyDataSetChanged();
+        } else {
+            artistAdapter.artists.clear();
+            artistAdapter.notifyDataSetChanged();
         }
     }
 
-    public String sanitizeQuery(String query){
+    public String sanitizeQuery(String query) {
         return query.replace(" ", "+");
     }
 
@@ -137,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             Gson gson = new Gson();
-            ArtistInfo ai = gson.fromJson(json.toString(),ArtistInfo.class);
+            ArtistInfo ai = gson.fromJson(json.toString(), ArtistInfo.class);
             return ai.getArtists().getItems();
             /*
             SpotifyEndpoint spotifyEndpoint = SpotifyEndpoint.retrofit.create(SpotifyEndpoint.class);

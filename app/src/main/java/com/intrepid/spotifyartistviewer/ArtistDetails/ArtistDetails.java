@@ -1,8 +1,8 @@
 package com.intrepid.spotifyartistviewer.ArtistDetails;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
@@ -20,7 +20,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -50,7 +49,7 @@ public class ArtistDetails extends AppCompatActivity {
             List<Item> items = new LoadAlbums().execute(ID).get();
             HashSet<String> repeatAlbums = new HashSet<>();
             for (Item item : items) {
-                if(!repeatAlbums.contains(item.getName())) {
+                if (!repeatAlbums.contains(item.getName())) {
                     artistAdapter.addAlbumItem(item);
                     repeatAlbums.add(item.getName());
                 }
@@ -93,7 +92,7 @@ public class ArtistDetails extends AppCompatActivity {
             StringBuffer json = new StringBuffer(1024);
             String tmp = "";
             try {
-                if(reader==null)
+                if (reader == null)
                     return new ArrayList<>();
                 while ((tmp = reader.readLine()) != null)
                     json.append(tmp).append("\n");
